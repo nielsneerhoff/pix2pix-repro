@@ -1,5 +1,3 @@
-<br><br><br>
-
 # Reproduction of pix2pix in PyTorch
 
 We provide PyTorch implementations for both unpaired and paired image-to-image translation.
