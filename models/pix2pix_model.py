@@ -89,15 +89,18 @@ class Pix2PixModel(BaseModel):
 
     def backward_D(self):
         """Calculate GAN loss for the discriminator"""
-        # Fake; stop backprop to the generator by detaching fake_B
-        fake_AB = torch.cat((self.real_A, self.fake_B), 1)  # we use conditional GANs; we need to feed both input and output to the discriminator
+
+        # FAKE: Feed real edge map x and fake image G(x) to discriminator.
+        fake_AB = torch.cat((self.real_A, self.fake_B), 1)
         pred_fake = self.netD(fake_AB.detach())
         self.loss_D_fake = self.criterionGAN(pred_fake, False)
-        # Real
+
+        # REAL: Feed real edge map x and real image y to discriminator.
         real_AB = torch.cat((self.real_A, self.real_B), 1)
         pred_real = self.netD(real_AB)
         self.loss_D_real = self.criterionGAN(pred_real, True)
-        # combine loss and calculate gradients
+
+        # Combine losses and calculate gradients.
         self.loss_D = (self.loss_D_fake + self.loss_D_real) * 0.5
         self.loss_D.backward()
 
