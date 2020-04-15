@@ -65,15 +65,6 @@ def process_cityscapes(gtFine_dir, leftImg8bit_dir, output_dir, phase):
         if i % (len(segmap_paths) // 10) == 0:
             print("%d / %d: last image saved at %s, " % (i, len(segmap_paths), savepath))
 
-
-        
-        
-        
-        
-        
-    
-
-
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
@@ -87,13 +78,11 @@ if __name__ == '__main__':
     opt = parser.parse_args()
 
     print(help_msg)
-    
+
     print('Preparing Cityscapes Dataset for val phase')
     process_cityscapes(opt.gtFine_dir, opt.leftImg8bit_dir, opt.output_dir, "val")
     print('Preparing Cityscapes Dataset for train phase')
     process_cityscapes(opt.gtFine_dir, opt.leftImg8bit_dir, opt.output_dir, "train")
 
     print('Done')
-
-    
 

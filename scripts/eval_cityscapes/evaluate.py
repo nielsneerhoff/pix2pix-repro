@@ -17,7 +17,6 @@ parser.add_argument("--split", type=str, default='val', help="Data split to be e
 parser.add_argument("--save_output_images", type=int, default=0, help="Whether to save the FCN output images")
 args = parser.parse_args()
 
-
 def main():
     if not os.path.isdir(args.output_dir):
         os.makedirs(args.output_dir)
@@ -54,6 +53,7 @@ def main():
             scipy.misc.imsave(output_image_dir + '/' + str(i) + '_input.jpg', im)
 
     mean_pixel_acc, mean_class_acc, mean_class_iou, per_class_acc, per_class_iou = get_scores(hist_perframe)
+    print(hist_perframe)
     with open(args.output_dir + '/evaluation_results.txt', 'w') as f:
         f.write('Mean pixel accuracy: %f\n' % mean_pixel_acc)
         f.write('Mean class accuracy: %f\n' % mean_class_acc)

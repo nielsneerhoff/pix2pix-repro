@@ -6,9 +6,9 @@ Image-to-image translation can be used to convert image from one domain to anoth
 
 """ Put some examples here for inspiration """
 
-In this blogpost, we will
-* evaluate the FCN-8 accuracy of image-to-image translation from 8-bit to cityscapes
-* evaluate the performance of our net on two new data sets, one small and one larger
+In this blogpost, we will evaluate the pix2pix performance
+* translating from 8-bit to cityscapes, a data set provided by the authors
+* on two new data sets, one small and one larger, consisting of flowers and front yards
 
 But first, we will show how to get started with the repository if you would like to do the reproduction yourself.
 
